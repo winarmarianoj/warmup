@@ -20,7 +20,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {}
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/user","/user/save").permitAll()
+                .antMatchers("/admin/").hasRole("ADMIN")
+                .antMatchers("/user/").hasRole("USER"); 
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
