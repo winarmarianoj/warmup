@@ -15,7 +15,6 @@ import com.marianowinar.warmup.repository.UserRepository;
 import com.marianowinar.warmup.service.interfaces.UserServiceDto;
 import com.marianowinar.warmup.util.logger.Errors;
 import com.marianowinar.warmup.util.validator.ValidUser;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,6 @@ public class UserService implements UserServiceDto {
     private final ValidUser validUser;
     private final Errors errors;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	private UserDetails users;
 
 	public UserService(UserRepository userRepo, UserMapper mapper,
 					   ValidUser validUser, Errors errors,

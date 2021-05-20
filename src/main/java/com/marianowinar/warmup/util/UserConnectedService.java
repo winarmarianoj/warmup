@@ -13,10 +13,8 @@ public class UserConnectedService {
 	UserService userService;
 
 	public String userConected() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
 		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-	    String name = loggedInUser.getName(); 
-		return name;
+	    return loggedInUser.getName();
 	}
 
 }

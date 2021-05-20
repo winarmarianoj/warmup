@@ -1,51 +1,43 @@
 package com.marianowinar.warmup.controller;
 
-import com.marianowinar.warmup.security.UserDetailsServiceImpl;
+import com.marianowinar.warmup.dto.request.UserDto;
+import com.marianowinar.warmup.dto.response.UserCreationResponseDto;
 import com.marianowinar.warmup.security.authentication.AuthenticationRequest;
 import com.marianowinar.warmup.security.authentication.AuthenticationResponse;
-import com.marianowinar.warmup.util.JwtUtil;
+import com.marianowinar.warmup.service.AuthenticationService;
+import com.marianowinar.warmup.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/auth")
 public class AuthenticationController {
 
-    private AuthenticationManager authenticationManager;
-    private JwtUtil jwtTokenUtil;
-    private UserDetailsServiceImpl userDetailsService;
+    private UserService service;
+    private AuthenticationService authenticationService;
 
-    public AuthenticationController(AuthenticationManager authenticationManager,
-                          JwtUtil jwtTokenUtil, UserDetailsServiceImpl userDetailsService) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.userDetailsService = userDetailsService;
+    public AuthenticationController(UserService service, AuthenticationService authenticationService) {
+        this.service = service;
+        this.authenticationService = authenticationService;
     }
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-            );
-        }
-        catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
-        }
-
-
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(authenticationRequest.getUsername());
-
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
-
+        final String jwt = authenticationService.createJwt(authenticationRequest);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
+
+    @ResponseBody
+    @PostMapping("/sign_up")
+    public ResponseEntity<UserCreationResponseDto> postUser(
+            @RequestBody @Valid UserDto request) {
+        UserCreationResponseDto response = service.save(request);
+
+        return ResponseEntity.created(response.getUri())
+                .body(response);
+    }
+
 }

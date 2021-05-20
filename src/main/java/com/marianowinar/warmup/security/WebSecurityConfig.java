@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate", "/user/save").permitAll()
+                .authorizeRequests().antMatchers("/auth/login", "/auth/sign_up").permitAll()
                 .antMatchers("/admin/").hasRole("ADMIN")
                 .antMatchers("/user/").hasRole("USER")
                 .anyRequest().authenticated().and()
@@ -60,12 +60,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }
-
-/*
-http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/","/user","/user/save").permitAll()
-                .antMatchers("/admin/").hasRole("ADMIN")
-                .antMatchers("/user/").hasRole("USER");
- */
