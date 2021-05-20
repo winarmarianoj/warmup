@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.regex.Pattern;
 
 @Component
-public class ValidUser {
+public class ValidUser extends Validator{
 
     public void validCreateUser(User user) throws UserException {
         if(user == null)

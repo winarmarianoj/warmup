@@ -1,13 +1,12 @@
-package com.marianowinar.warmup.exception.authentication;
+package com.marianowinar.warmup.exception.category;
 
-@SuppressWarnings("serial")
-public class AuthException extends Exception{
+public class CategoryException extends Exception{
     protected int idError;
     protected String error;
 
-    public AuthException() {}
+    public CategoryException() {}
 
-    public AuthException(String message) {
+    public CategoryException(String message) {
         super(message);
     }
 
