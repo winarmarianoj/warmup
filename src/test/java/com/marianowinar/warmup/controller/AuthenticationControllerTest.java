@@ -2,7 +2,6 @@ package com.marianowinar.warmup.controller;
 
 import com.marianowinar.warmup.dto.request.UserDto;
 import com.marianowinar.warmup.dto.response.UserCreationResponseDto;
-import com.marianowinar.warmup.model.User;
 import com.marianowinar.warmup.security.UserDetailsServiceImpl;
 import com.marianowinar.warmup.security.authentication.AuthenticationRequest;
 import com.marianowinar.warmup.security.authentication.AuthenticationResponse;

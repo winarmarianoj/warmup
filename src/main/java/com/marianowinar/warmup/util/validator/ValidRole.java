@@ -17,7 +17,7 @@ public class ValidRole extends Validator{
 		validateRole(role.getRole());		
 	}
 
-	private void validateRole(RoleName role) throws InvalidRoleException {
+	public void validateRole(RoleName role) throws InvalidRoleException {
 		if(!role.equals(RoleName.ROLE_ADMIN) && !role.equals(RoleName.ROLE_USER))
 			throw new InvalidRoleException(role);
 	}

@@ -1,13 +1,9 @@
 package com.marianowinar.warmup.controller;
 
 import com.marianowinar.warmup.dto.request.CategoryDto;
-import com.marianowinar.warmup.dto.request.UserDto;
 import com.marianowinar.warmup.dto.response.CategoryCreationResponseDto;
 import com.marianowinar.warmup.dto.response.CategoryResponseDto;
-import com.marianowinar.warmup.dto.response.UserCreationResponseDto;
-import com.marianowinar.warmup.dto.response.UserResponseDto;
 import com.marianowinar.warmup.exception.category.NullCategoryException;
-import com.marianowinar.warmup.exception.user.NullUserException;
 import com.marianowinar.warmup.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

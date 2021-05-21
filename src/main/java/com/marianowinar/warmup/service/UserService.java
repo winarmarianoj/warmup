@@ -12,14 +12,14 @@ import com.marianowinar.warmup.exception.user.UserException;
 import com.marianowinar.warmup.mapper.UserMapper;
 import com.marianowinar.warmup.model.User;
 import com.marianowinar.warmup.repository.UserRepository;
-import com.marianowinar.warmup.service.interfaces.UserServiceDto;
+import com.marianowinar.warmup.service.interfaces.IUserServiceDto;
 import com.marianowinar.warmup.util.logger.Errors;
 import com.marianowinar.warmup.util.validator.ValidUser;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserServiceDto {
+public class UserService implements IUserServiceDto {
 
     private final UserRepository userRepo;
     private final UserMapper mapper;
@@ -72,6 +72,11 @@ public class UserService implements UserServiceDto {
 	@Override
 	public List<UserResponseDto> findAllOrderByUsername() {
 		return userRepo.getOrderedByUsername().stream().map(u -> mapper.toUserDto(u)).collect(Collectors.toList());
+	}
+
+	@Override
+	public User userFindByUsername(String username){
+		return userRepo.findByUsername(username);
 	}
 
 }

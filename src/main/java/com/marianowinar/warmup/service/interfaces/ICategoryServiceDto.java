@@ -4,10 +4,11 @@ import com.marianowinar.warmup.dto.request.CategoryDto;
 import com.marianowinar.warmup.dto.response.CategoryCreationResponseDto;
 import com.marianowinar.warmup.dto.response.CategoryResponseDto;
 import com.marianowinar.warmup.exception.category.NullCategoryException;
+import com.marianowinar.warmup.model.Category;
 
 import java.util.List;
 
-public interface CategoryServiceDto {
+public interface ICategoryServiceDto {
 
     CategoryCreationResponseDto save(CategoryDto dto);
 
@@ -16,4 +17,6 @@ public interface CategoryServiceDto {
     CategoryResponseDto findByCategory(String category);
 
     List<CategoryResponseDto> findAllOrderByCategory();
+
+    Category categoryFindByCategory(String nameCategory);
 }

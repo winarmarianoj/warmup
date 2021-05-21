@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "category")
 public class Category {
 
-    public static final int MIN_CATEGORY_SIZE = 5;
-    public static final int MAX_CATEGORY_SIZE = 25;
+    public static final int MIN_CATEGORY_SIZE = 3;
+    public static final int MAX_CATEGORY_SIZE = 30;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

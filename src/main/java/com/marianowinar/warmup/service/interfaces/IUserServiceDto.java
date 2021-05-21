@@ -4,10 +4,11 @@ import com.marianowinar.warmup.dto.request.UserDto;
 import com.marianowinar.warmup.dto.response.UserCreationResponseDto;
 import com.marianowinar.warmup.dto.response.UserResponseDto;
 import com.marianowinar.warmup.exception.user.NullUserException;
+import com.marianowinar.warmup.model.User;
 
 import java.util.List;
 
-public interface UserServiceDto {
+public interface IUserServiceDto {
 
     UserCreationResponseDto save(UserDto dto);
 
@@ -16,5 +17,7 @@ public interface UserServiceDto {
     UserResponseDto findByUsername(String username);
 
     List<UserResponseDto> findAllOrderByUsername();
+
+    User userFindByUsername(String username);
 
 }

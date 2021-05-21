@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.*;
 
+import static com.marianowinar.warmup.model.Category.MAX_CATEGORY_SIZE;
+import static com.marianowinar.warmup.model.Category.MIN_CATEGORY_SIZE;
 import static com.marianowinar.warmup.model.Post.*;
 
 public class PostDto {
@@ -25,8 +27,15 @@ public class PostDto {
     private String content;
 
     @URL
-    //@Pattern(regexp="(.)+\\.(jpg|png|jpeg)$", message="Please provide a valid email address")
     private String image;
+
+    @NotNull(message = "category cannot be null.")
+    @NotBlank(message = "category cannot be empty.")
+    @Size(min = MIN_CATEGORY_SIZE, message = "category must contain at least "
+            + MIN_CATEGORY_SIZE + " characters.")
+    @Size(max = MAX_CATEGORY_SIZE, message = "category must contain less than "
+            + MAX_CATEGORY_SIZE + " characters.")
+    private String nameCategory;
 
     public String getTitle() {
         return title;
@@ -39,4 +48,6 @@ public class PostDto {
     public String getImage() {
         return image;
     }
+
+    public String getNameCategory() {return nameCategory;}
 }

@@ -1,11 +1,8 @@
 package com.marianowinar.warmup.controller;
 
-import com.marianowinar.warmup.dto.request.UserDto;
-import com.marianowinar.warmup.dto.response.UserCreationResponseDto;
 import com.marianowinar.warmup.dto.response.UserResponseDto;
 import com.marianowinar.warmup.exception.user.NullUserException;
 import com.marianowinar.warmup.service.UserService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -8,7 +8,7 @@ import com.marianowinar.warmup.exception.category.NullCategoryException;
 import com.marianowinar.warmup.mapper.CategoryMapper;
 import com.marianowinar.warmup.model.Category;
 import com.marianowinar.warmup.repository.CategoryRepository;
-import com.marianowinar.warmup.service.interfaces.CategoryServiceDto;
+import com.marianowinar.warmup.service.interfaces.ICategoryServiceDto;
 import com.marianowinar.warmup.util.logger.Errors;
 import com.marianowinar.warmup.util.validator.ValidCategory;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryService implements CategoryServiceDto {
+public class CategoryService implements ICategoryServiceDto {
 
     private CategoryRepository categoryRepository;
     private Errors errors;
@@ -26,7 +26,7 @@ public class CategoryService implements CategoryServiceDto {
     private ValidCategory validCategory;
 
     public CategoryService(CategoryRepository categoryRepository, Errors errors,
-                            CategoryMapper categoryMapper, ValidCategory validCategory) {
+                           CategoryMapper categoryMapper, ValidCategory validCategory) {
         this.categoryRepository = categoryRepository;
         this.errors = errors;
         this.mapper = categoryMapper;
@@ -57,12 +57,17 @@ public class CategoryService implements CategoryServiceDto {
     }
 
     @Override
-    public CategoryResponseDto findByCategory(String category) {
-        return mapper.toCategoryDto(categoryRepository.findByCategory(category));
+    public CategoryResponseDto findByCategory(String nameCategory) {
+        return mapper.toCategoryDto(categoryRepository.findByCategory(nameCategory));
     }
 
     @Override
     public List<CategoryResponseDto> findAllOrderByCategory() {
         return categoryRepository.getOrderedByCategory().stream().map(u -> mapper.toCategoryDto(u)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Category categoryFindByCategory(String nameCategory) {
+        return categoryRepository.findByCategory(nameCategory);
     }
 }

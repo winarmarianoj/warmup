@@ -6,8 +6,6 @@ import com.marianowinar.warmup.exception.category.NullCategoryException;
 import com.marianowinar.warmup.model.Category;
 import org.springframework.stereotype.Component;
 
-import java.util.regex.Pattern;
-
 @Component
 public class ValidCategory extends Validator{
 
@@ -20,18 +18,7 @@ public class ValidCategory extends Validator{
 
     public void validCategory(String category) throws InvalidCategoryException {
         if(category == null)
-            throw new InvalidCategoryException(category);
-
-        if(validateString(category))
-            throw new InvalidCategoryException(category);
+            throw new InvalidCategoryException(category + "is null");
     }
 
-    private boolean validateString(String string) {
-        boolean isValid = false;
-
-        if (!Pattern.matches(REGEX_NAMES, string))
-            isValid = true;
-
-        return isValid;
-    }
 }
