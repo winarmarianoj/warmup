@@ -23,6 +23,12 @@ class PostedControllerTest {
         postedController = new PostedController(service);
     }
 
+    /**
+     * Devuelve los datos de un posteo que esta en la Tabla de eliminados
+     * Recordar que no son borrados de ningún lugar, solo se anotan así
+     * para determinar que fueron eliminados por el usuario
+     * @throws NullPostException
+     */
     @Test
     void getPosted() throws NullPostException {
         PostedService service = mock(PostedService.class);
@@ -30,12 +36,19 @@ class PostedControllerTest {
         when(service.findById(num)).thenReturn(new PostedResponseDto());
     }
 
+    /**
+     * Devuelve una Lista de los posteos eliminados
+     */
     @Test
     void getAllPosted() {
         PostedService service = mock(PostedService.class);
         when(service.findAllOrderByDate()).thenReturn(new ArrayList<>());
     }
 
+    /**
+     * Crea un nuevo posteo eliminado en la BD
+     * @throws NullPostException
+     */
     @Test
     void postPosted() throws NullPostException {
         PostedService service = mock(PostedService.class);

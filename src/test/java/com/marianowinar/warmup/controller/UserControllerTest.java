@@ -22,6 +22,10 @@ class UserControllerTest {
         userController = new UserController(service);
     }
 
+    /**
+     * Devuelve los datos de un usuario según su número de Id
+     * @throws NullUserException
+     */
     @Test
     void getUser() throws NullUserException {
         Long num = Long.valueOf(1);
@@ -29,6 +33,9 @@ class UserControllerTest {
         when(service.findById(num)).thenReturn(new UserResponseDto());
     }
 
+    /**
+     * Devuelve los datos de un usuario según su username
+     */
     @Test
     void getUserName() {
         String names = "win";
@@ -36,6 +43,9 @@ class UserControllerTest {
         when(service.findByUsername(names)).thenReturn(new UserResponseDto());
     }
 
+    /**
+     * Devuelve una Lista de Usuarios
+     */
     @Test
     void testGetUser() {
         UserService service = mock(UserService.class);

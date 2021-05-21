@@ -22,6 +22,10 @@ class CategoryControllerTest {
         controller = new CategoryController(service);
     }
 
+    /**
+     * Devuelve todos los datos de una categoría según su Id
+     * @throws NullCategoryException
+     */
     @Test
     void getCategory() throws NullCategoryException {
         Long num = Long.valueOf(1);
@@ -29,6 +33,9 @@ class CategoryControllerTest {
         when(service.findById(num)).thenReturn(new CategoryResponseDto());
     }
 
+    /**
+     * Devuelve una categoría con todos su datos según su nombre
+     */
     @Test
     void getCategoryName() {
         String names = "Category";
@@ -36,6 +43,9 @@ class CategoryControllerTest {
         when(service.findByCategory(names)).thenReturn(new CategoryResponseDto());
     }
 
+    /**
+     * Crea una Categoría nueva en la BD
+     */
     @Test
     void postCategory() {
         CategoryDto dto = mock(CategoryDto.class);

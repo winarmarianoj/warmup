@@ -25,6 +25,10 @@ class PostControllerTest {
         postController = new PostController(service);
     }
 
+    /**
+     * Devuelve todos los datos de un posteo según su número de Id
+     * @throws NullPostException
+     */
     @Test
     void getPost() throws NullPostException {
         PostService service = mock(PostService.class);
@@ -32,6 +36,9 @@ class PostControllerTest {
         when(service.findById(num)).thenReturn(new PostResponseDto());
     }
 
+    /**
+     * Devuelve una Lista con los posteos según su Título
+     */
     @Test
     void getAllPostOrderByTitle(){
         PostService service = mock(PostService.class);
@@ -39,6 +46,9 @@ class PostControllerTest {
         when(service.findAllOrderByTitle(title)).thenReturn(new ArrayList<>());
     }
 
+    /**
+     * Devuelve una Lista con los posteos según su nombre de Categoría
+     */
     @Test
     void getAllPostOrderByCategory(){
         PostService service = mock(PostService.class);
@@ -46,6 +56,9 @@ class PostControllerTest {
         when(service.findAllByCategory(nameCategory)).thenReturn(new ArrayList<>());
     }
 
+    /**
+     * Devuelve una Lista de Posteos según el Título y Nombre de Categoría seleccionados
+     */
     @Test
     void getAllPostOrderByTitleCategory(){
         PostService service = mock(PostService.class);
@@ -54,12 +67,18 @@ class PostControllerTest {
         when(service.findByTitleCategory(title,nameCategory)).thenReturn(new ArrayList<>());
     }
 
+    /**
+     * Devuelve una Lista con los posteos ordenados por fecha
+     */
     @Test
     void getAllPostOrderByDate(){
         PostService service = mock(PostService.class);
         when(service.findAllOrderByDate()).thenReturn(new ArrayList<>());
     }
 
+    /**
+     * Crea un Posteo nuevo en la BD
+     */
     @Test
     void postSave(){
         PostService service = mock(PostService.class);
@@ -67,6 +86,10 @@ class PostControllerTest {
         when(service.save(dto)).thenReturn(new PostCreationResponseDto());
     }
 
+    /**
+     * Modifica los datos de un posteo seleccionado
+     * @throws PostException
+     */
     @Test
     void postUpdate() throws PostException {
         PostService service = mock(PostService.class);

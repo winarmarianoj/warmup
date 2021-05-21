@@ -28,6 +28,11 @@ class AuthenticationControllerTest {
         authenticationController = new AuthenticationController(userService, service);
     }
 
+    /**
+     * Crea la Autenticación con Jwt y el Token para luego seguir
+     * navegando en el sitio con dicho token
+     * @throws Exception
+     */
     @Test
     void createAuthenticationToken() throws Exception {
         AuthenticationService service = mock(AuthenticationService.class);
@@ -36,6 +41,9 @@ class AuthenticationControllerTest {
                 .thenReturn(String.valueOf(new AuthenticationResponse(service.createJwt(authenticationRequest))));
     }
 
+    /**
+     * Crea a un Usuario nuevo en la BD
+     */
     @Test
     void postUser() {
         UserDto dto = mock(UserDto.class);
