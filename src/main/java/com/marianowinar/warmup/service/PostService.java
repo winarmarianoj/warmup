@@ -100,7 +100,6 @@ public class PostService implements IPostServiceDto {
         return postRepository.getOrderedByTitle(title).stream().map(u -> postMapper.toPostDto(u)).collect(Collectors.toList());
     }
 
-
     @Override
     public List<PostResponseDto> findAllByCategory(String nameCategory) {
         Category category = categoryService.categoryFindByCategory(nameCategory);

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

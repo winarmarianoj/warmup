@@ -25,6 +25,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> getOrderedByTitle(@PathParam("title") String title);
 
     @Query("FROM Post p WHERE p.title = :title and p.category = :category ORDER BY p.title, p.category")
-    List<Post> getOrderedByTitleCategoryId(@PathParam("title") String title, @PathParam("title") Category category);
+    List<Post> getOrderedByTitleCategoryId(@PathParam("title") String title, @PathParam("category") Category category);
 
 }

@@ -1,6 +1,5 @@
 package com.marianowinar.warmup.service;
 
-import com.marianowinar.warmup.dto.ErrorDto;
 import com.marianowinar.warmup.dto.response.PostedCreationResponseDto;
 import com.marianowinar.warmup.dto.response.PostedResponseDto;
 import com.marianowinar.warmup.exception.post.NullPostException;

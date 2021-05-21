@@ -1,7 +1,6 @@
 package com.marianowinar.warmup.util.validator;
 
 import com.marianowinar.warmup.exception.category.CategoryException;
-import com.marianowinar.warmup.exception.category.NullCategoryException;
 import com.marianowinar.warmup.exception.post.PostException;
 import com.marianowinar.warmup.exception.role.RoleException;
 import com.marianowinar.warmup.exception.user.UserException;
@@ -14,6 +13,6 @@ public abstract class Validator {
 
 	public void validCreateUser(User user) throws UserException {}
 	public void validCreateRole(Role role) throws RoleException {}
-	public void validCreateCategory(Category category) throws NullCategoryException, CategoryException {}
+	public void validCreateCategory(Category category) throws CategoryException {}
 	public void validCreatePost(Post post) throws PostException {}
 }

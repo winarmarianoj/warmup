@@ -41,9 +41,9 @@ public class PostController {
     }
 
     @ResponseBody
-    @GetMapping("/title/{title}/{nameCategory}") //Todo no logre que funcione el query
+    @GetMapping("/title/{title}/{nameCategory}")
     public ResponseEntity<List<PostResponseDto>> getAllPostOrderByTitleCategory(@PathVariable("title") String title,
-                                                                                @PathVariable("title") String nameCategory) {
+                                                                                @PathVariable("nameCategory") String nameCategory) {
         return ResponseEntity.ok(postService.findByTitleCategory(title,nameCategory));
     }
 
@@ -55,7 +55,7 @@ public class PostController {
 
     @ResponseBody
     @PostMapping("/save")
-    public ResponseEntity<PostCreationResponseDto> postPosts(
+    public ResponseEntity<PostCreationResponseDto> postSave(
             @RequestBody @Valid PostDto request) {
         PostCreationResponseDto response = postService.save(request);
 
@@ -65,7 +65,7 @@ public class PostController {
 
     @ResponseBody
     @PostMapping("/update/{id}")
-    public ResponseEntity<PostResponseDto> postPatch(@PathVariable("id") Long id,
+    public ResponseEntity<PostResponseDto> postUpdate(@PathVariable("id") Long id,
             @RequestBody @Valid PostDto request) throws PostException {
         return ResponseEntity.ok(postService.patch(id, request));
     }

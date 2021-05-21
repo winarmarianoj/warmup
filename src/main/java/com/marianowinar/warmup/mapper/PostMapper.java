@@ -57,6 +57,7 @@ public class PostMapper {
         PostOrderByDateDto dto = new PostOrderByDateDto();
         dto.setPostId(post.getPostId());
         dto.setTitle(post.getTitle());
+        dto.setContent(post.getContent());
         dto.setImage(post.getImage());
         dto.setNameCategory(post.getCategory().getCategory());
         dto.setDate(post.getDate().toString());

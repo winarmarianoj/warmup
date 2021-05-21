@@ -13,7 +13,6 @@ public class UserDto {
     @Size(max = MAX_USERNAME_SIZE, message = "email must contain less than "
             + MAX_USERNAME_SIZE + " characters.")
     @Email(message="Please provide a valid email address")
-    //@Pattern(regexp="^([a-zA-Z0-9-._ñ]+)@([a-zA-Z0-9-._ñ]+).([a-zA-Z]{2,5})$", message="Please provide a valid email address")
     private String email;
 
     @NotNull(message = "password cannot be null.")

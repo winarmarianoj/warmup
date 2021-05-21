@@ -4,6 +4,7 @@ public class PostOrderByDateDto {
 
     private Long postId;
     private String title;
+    private String content;
     private String image;
     private String nameCategory;
     private String date;
@@ -23,6 +24,10 @@ public class PostOrderByDateDto {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getContent() {return content;}
+
+    public void setContent(String content) {this.content = content;}
 
     public String getImage() {
         return image;
